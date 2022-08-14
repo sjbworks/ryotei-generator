@@ -2,6 +2,9 @@
 import { h } from "preact";
 import { tw } from "@twind";
 import Counter from "../islands/Counter.tsx";
+import Form from "../islands/Form.tsx";
+import Plan from "../islands/Plan.tsx";
+import FloatingActionButton from "../islands/FloatingActionButton.tsx";
 
 export default function Home() {
   return (
@@ -16,6 +19,9 @@ export default function Home() {
         file, and refresh.
       </p>
       <Counter start={3} />
+      <Plan dateTime={"2020-10-13 15:30"} text={"名古屋駅"} />
+      <Form />
+      <FloatingActionButton />
     </div>
   );
 }

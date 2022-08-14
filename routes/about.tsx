@@ -10,7 +10,6 @@ export const handler: Handlers = {
 };
 
 export default function AboutPage({ data }: PageProps<string | null>) {
-  console.log();
   return (
     <main>
       <h1>About</h1>
