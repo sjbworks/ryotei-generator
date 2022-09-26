@@ -4,7 +4,7 @@ import { useState } from "preact/hooks";
 import { tw } from "@twind";
 import { format } from "date-fns";
 
-interface PlanProps {
+export interface PlanProps {
   dateTime: string;
   text: string;
 }

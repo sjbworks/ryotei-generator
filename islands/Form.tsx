@@ -6,7 +6,11 @@ import { tw } from "@twind";
 import { format } from "date-fns";
 import { createClient } from "supabase";
 
-export default function Form() {
+interface FormProps {
+  onClickSaveButton?: () => void;
+}
+
+export default function Form({ onClickSaveButton }: FormProps) {
   const [plan, setPlan] = useState({
     dateTime: "",
     text: "",
@@ -16,20 +20,20 @@ export default function Form() {
   const handleChangeText = (e: Event) =>
     setPlan({ ...plan, text: (e.target as HTMLInputElement).value });
 
-  const SUPABASE_KEY = Deno.env.get("SUPABASE_KEY")!;
-  const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
-  console.log(Deno.env.get("SUPABASE_KEY"));
-  const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+  // const SUPABASE_KEY = Deno.env.get("SUPABASE_KEY")!;
+  // const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+  // console.log(Deno.env.get("SUPABASE_KEY"));
+  // const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  const handleClickSaveButton = async () => {
-    const { data, error } = await supabase
-      .from("ryotei")
-      .insert([
-        { id: 123456, datetime: plan.dateTime, description: plan.text },
-      ]);
-    console.log(data);
-    console.log(error);
-  };
+  // const handleClickSaveButton = async () => {
+  //   const { data, error } = await supabase
+  //     .from("ryotei")
+  //     .insert([
+  //       { id: 123456, datetime: plan.dateTime, description: plan.text },
+  //     ]);
+  //   console.log(data);
+  //   console.log(error);
+  // };
 
   const btn = tw`px-2 py-1 border(gray-100 1) hover:bg-gray-200`;
   return (
@@ -40,7 +44,7 @@ export default function Form() {
         onInput={handleChangeDateTime}
       />
       <input type="text" value={plan.text} onInput={handleChangeText} />
-      <button onClick={handleClickSaveButton} class={btn}>
+      <button onClick={onClickSaveButton} class={btn}>
         保存
       </button>
     </div>
