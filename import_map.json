@@ -11,7 +11,9 @@
     "date-fns/": "https://esm.sh/date-fns@2.29.1/",
     "@mui/material": "https://esm.sh/@mui/material@5.10.0",
     "@mui/material/": "https://esm.sh/@mui/material@5.10.0/",
-    "@mui/icons-material": "https://esm.sh/@mui/icons-material@5.8.4",
-    "@mui/icons-material/": "https://esm.sh/@mui/icons-material@5.8.4/"
+    "react-icons": "https://esm.sh/react-icons@4.4.0",
+    "react-icons/": "https://esm.sh/react-icons@4.4.0/",
+    "supabase": "https://esm.sh/@supabase/supabase-js@1.35.3",
+    "supabase/": "https://esm.sh/@supabase/supabase-js@1.35.3/"
   }
 }

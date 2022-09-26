@@ -9,3 +9,5 @@ deno task start
 ```
 
 This will watch the project directory and restart as necessary.
+
+When using `env`, you must set `--allow-env`.
