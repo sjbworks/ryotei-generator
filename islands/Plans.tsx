@@ -1,20 +1,20 @@
 /** @jsx h */
 import { h } from "preact";
 import { useState } from "preact/hooks";
-import { tw } from "@twind";
-import { format } from "date-fns";
 import Plan, { PlanProps } from "./Plan.tsx";
+import Form from "./Form.tsx";
 
-interface PlansProps {
-  plans: PlanProps[];
-}
-
-export default function Plans({ plans }: PlansProps) {
+export default function Plans() {
+  const [plans, setPlans] = useState<PlanProps[]>([]);
+  const onClickSaveButton = (plans: PlanProps[]) => {
+    setPlans(plans);
+  };
   return (
     <div>
-      {plans.map((props: PlanProps) => {
+      {plans?.map((props: PlanProps) => {
         return <Plan {...props} />;
       })}
+      <Form onClickSaveButton={onClickSaveButton} plans={plans} />
     </div>
   );
 }

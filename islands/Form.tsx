@@ -5,16 +5,15 @@ import { IS_BROWSER } from "$fresh/runtime.ts";
 import { tw } from "@twind";
 import { format } from "date-fns";
 import { createClient } from "supabase";
+import { PlanProps } from "./Plan.tsx";
 
 interface FormProps {
-  onClickSaveButton?: () => void;
+  onClickSaveButton: (plans: PlanProps[]) => void;
+  plans: PlanProps[];
 }
 
-export default function Form({ onClickSaveButton }: FormProps) {
-  const [plan, setPlan] = useState({
-    dateTime: "",
-    text: "",
-  });
+export default function Form({ onClickSaveButton, plans }: FormProps) {
+  const [plan, setPlan] = useState<PlanProps>({ dateTime: "", text: "" });
   const handleChangeDateTime = (e: Event) =>
     setPlan({ ...plan, dateTime: (e.target as HTMLInputElement).value });
   const handleChangeText = (e: Event) =>
@@ -44,7 +43,7 @@ export default function Form({ onClickSaveButton }: FormProps) {
         onInput={handleChangeDateTime}
       />
       <input type="text" value={plan.text} onInput={handleChangeText} />
-      <button onClick={onClickSaveButton} class={btn}>
+      <button onClick={() => onClickSaveButton([...plans, plan])} class={btn}>
         保存
       </button>
     </div>
