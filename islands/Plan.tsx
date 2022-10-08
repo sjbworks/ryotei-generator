@@ -1,6 +1,5 @@
 /** @jsx h */
 import { h } from "preact";
-import { useState } from "preact/hooks";
 import { tw } from "@twind";
 import { format } from "date-fns";
 
@@ -10,10 +9,11 @@ export interface PlanProps {
 }
 
 export default function Plan({ dateTime, text }: PlanProps) {
+  const DATETIME_FORMAT = "yyyy/MM/dd HH:mm";
   return (
-    <div class={tw`flex flex-col gap-2 w-full`}>
-      <div>{dateTime}</div>
-      <div>{text}</div>
-    </div>
+    <ul class={tw`flex flex-row gap-2 w-full`}>
+      <li>{format(new Date(dateTime), DATETIME_FORMAT)}</li>
+      <li>{text}</li>
+    </ul>
   );
 }

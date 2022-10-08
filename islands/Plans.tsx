@@ -5,9 +5,11 @@ import Plan, { PlanProps } from "./Plan.tsx";
 import Form from "./Form.tsx";
 
 export default function Plans() {
-  const [plans, setPlans] = useState<PlanProps[]>([]);
+  const initialPlans = JSON.parse(`${sessionStorage.getItem("plans")}` || "");
+  const [plans, setPlans] = useState<PlanProps[]>(initialPlans);
   const onClickSaveButton = (plans: PlanProps[]) => {
     setPlans(plans);
+    sessionStorage.setItem("plans", JSON.stringify(plans));
   };
   return (
     <div>

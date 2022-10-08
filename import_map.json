@@ -14,6 +14,8 @@
     "react-icons": "https://esm.sh/react-icons@4.4.0",
     "react-icons/": "https://esm.sh/react-icons@4.4.0/",
     "supabase": "https://esm.sh/@supabase/supabase-js@1.35.3",
-    "supabase/": "https://esm.sh/@supabase/supabase-js@1.35.3/"
+    "supabase/": "https://esm.sh/@supabase/supabase-js@1.35.3/",
+    "tw-elements": "https://esm.sh/tw-elements@1.0.0-alpha12",
+    "tw-elements/": "https://esm.sh/tw-elements@1.0.0-alpha12/"
   }
 }
