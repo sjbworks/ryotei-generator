@@ -16,7 +16,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110528639"
@@ -25,7 +25,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110529326"
@@ -34,7 +34,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110530280"
@@ -43,7 +43,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110531187"
@@ -52,7 +52,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110532511"
@@ -61,7 +61,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110533185"
@@ -70,7 +70,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110534193"
@@ -79,7 +79,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110536183"
@@ -88,7 +88,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110538978"
@@ -97,7 +97,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110540012"
@@ -106,7 +106,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110541014"
@@ -115,7 +115,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110542646"
@@ -124,7 +124,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110543783"
@@ -133,7 +133,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110545409"
@@ -142,7 +142,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110547191"
@@ -152,7 +152,7 @@ export default function Header() {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        width="300"
+        width="250"
         height="50"
         viewBox="0 0 626 148"
       >
@@ -160,7 +160,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110743936"
@@ -169,7 +169,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110745067"
@@ -178,7 +178,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110745991"
@@ -187,7 +187,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110747457"
@@ -196,7 +196,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110748933"
@@ -205,7 +205,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110750827"
@@ -214,7 +214,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110752199"
@@ -223,7 +223,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110753307"
@@ -232,7 +232,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110754646"
@@ -241,7 +241,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110755849"
@@ -250,7 +250,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110756673"
@@ -259,7 +259,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110757508"
@@ -268,7 +268,7 @@ export default function Header() {
         <path
           fill="transparent"
           stroke="#000"
-          stroke-width="30"
+          stroke-width="20"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664110759097"

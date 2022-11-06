@@ -9,7 +9,7 @@ export default function FloatingActionButton({
 }: FloatingActionButtonProps) {
   return (
     <button
-      class={tw`rounded-full p-3 bg-orange-400 hover:bg-orange-500 ${className}`}
+      class={tw`w-50 h-50 rounded-full p-3 rounded-full hover:bg-rose-100 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none ${className}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

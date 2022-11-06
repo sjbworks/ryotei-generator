@@ -3,19 +3,13 @@
     "$fresh/": "https://deno.land/x/fresh@1.0.1/",
     "preact": "https://esm.sh/preact@10.8.2",
     "preact/": "https://esm.sh/preact@10.8.2/",
+    "@preact/signals": "https://esm.sh/*@preact/signals@1.1.1",
+    "@preact/signals-core": "https://esm.sh/@preact/signals-core@1.2.1",
     "preact-render-to-string": "https://esm.sh/preact-render-to-string@5.2.0?deps=preact@10.8.2",
     "@twind": "./utils/twind.ts",
     "twind": "https://esm.sh/twind@0.16.17",
     "twind/": "https://esm.sh/twind@0.16.17/",
     "date-fns": "https://esm.sh/date-fns@2.29.1",
-    "date-fns/": "https://esm.sh/date-fns@2.29.1/",
-    "@mui/material": "https://esm.sh/@mui/material@5.10.0",
-    "@mui/material/": "https://esm.sh/@mui/material@5.10.0/",
-    "react-icons": "https://esm.sh/react-icons@4.4.0",
-    "react-icons/": "https://esm.sh/react-icons@4.4.0/",
-    "supabase": "https://esm.sh/@supabase/supabase-js@1.35.3",
-    "supabase/": "https://esm.sh/@supabase/supabase-js@1.35.3/",
-    "tw-elements": "https://esm.sh/tw-elements@1.0.0-alpha12",
-    "tw-elements/": "https://esm.sh/tw-elements@1.0.0-alpha12/"
+    "date-fns/": "https://esm.sh/date-fns@2.29.1/"
   }
 }
