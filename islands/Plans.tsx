@@ -8,21 +8,19 @@ import FloatingActionButton from "./FloatingActionButton.tsx";
 import Header from "./Header.tsx";
 
 export default function Plans() {
-  const initialPlans = JSON.parse(`${sessionStorage.getItem("plans")}` || "");
+  const initialPlans = JSON.parse(`${sessionStorage.getItem("plans")}`) || [];
   const [isFormOpen, setIsFormOpen] = useState(true);
   const [plans, setPlans] = useState<PlanProps[]>(initialPlans);
   const onClickSaveButton = (plans: PlanProps[]) => {
-    console.log(plans);
     setPlans(plans);
-    console.log(plans);
     sessionStorage.setItem("plans", JSON.stringify(plans));
   };
   return (
     <div class={tw`flex flex-col p-5 mx-auto max-w-screen-md min-h-screen`}>
       <Header />
-      <div class={tw`flex-grow`}>
-        {plans?.map((props: PlanProps) => {
-          return <Plan {...props} />;
+      <div class={tw`flex-grow pt-5`}>
+        {plans?.map((props, index) => {
+          return <Plan {...props} index={index} />;
         })}
       </div>
       <footer class={tw`flex`}>
