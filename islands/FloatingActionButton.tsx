@@ -2,14 +2,19 @@
 import { h } from "preact";
 import { tw } from "@twind";
 
-type FloatingActionButtonProps = { className: string };
+type FloatingActionButtonProps = {
+  className: string;
+  onClickFloatingActionButton: () => void;
+};
 
 export default function FloatingActionButton({
   className,
+  onClickFloatingActionButton,
 }: FloatingActionButtonProps) {
   return (
     <button
       class={tw`w-50 h-50 rounded-full p-3 rounded-full hover:bg-rose-100 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none ${className}`}
+      onClick={onClickFloatingActionButton}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

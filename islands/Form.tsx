@@ -7,9 +7,10 @@ import { PlanProps } from "./Plan.tsx";
 interface FormProps {
   onClickSaveButton: (plans: PlanProps[]) => void;
   plans: PlanProps[];
+  hidden: string;
 }
 
-export default function Form({ onClickSaveButton, plans }: FormProps) {
+export default function Form({ onClickSaveButton, plans, hidden }: FormProps) {
   const [plan, setPlan] = useState<PlanProps>({
     dateTime: "",
     text: "",
@@ -21,7 +22,7 @@ export default function Form({ onClickSaveButton, plans }: FormProps) {
   const btn = tw`px-2 py-1 border(gray-100 1) hover:bg-gray-200`;
   return (
     <div
-      class={tw`p-3 flex flex-col gap-2 w-full rounded-t-md bg-warmGray-200`}
+      class={tw`p-3 flex flex-col gap-2 w-full rounded-t-md bg-warmGray-200 ${hidden}`}
     >
       <label>
         <input
