@@ -5,14 +5,18 @@ import Plan, { PlanProps } from "./Plan.tsx";
 import Form from "./Form.tsx";
 import { tw } from "@twind";
 import FloatingActionButton from "./FloatingActionButton.tsx";
-import Header from "./Header.tsx";
 
-export default function Plans() {
+export interface PlansAreaProps {
+  className: string;
+}
+
+export default function PlansAreaProps({ className }: PlansAreaProps) {
   const initialPlans = JSON.parse(`${sessionStorage.getItem("plans")}`) || [];
-  const [plans, setPlans] = useState<PlanProps[]>(initialPlans);
+  const [plans, setPlans] =
+    useState<Pick<PlanProps, "dateTime" | "text">[]>(initialPlans);
   const [isFormOpen, setIsFormOpen] = useState(true);
   const [hidden, setHidden] = useState<string>("");
-  const onClickSaveButton = (plans: PlanProps[]) => {
+  const onClickSaveButton = (plans: Pick<PlanProps, "dateTime" | "text">[]) => {
     setPlans(plans);
     sessionStorage.setItem("plans", JSON.stringify(plans));
     setIsFormOpen(false);
@@ -27,16 +31,16 @@ export default function Plans() {
   );
 
   return (
-    <div class={tw`flex flex-col p-5 mx-auto max-w-screen-md min-h-screen`}>
-      <Header />
-      <div class={tw`flex-grow pt-5`}>
-        {plans?.map((props, index) => {
-          return <Plan {...props} index={index} />;
-        })}
-      </div>
+    <main class={className}>
+      <ul class={tw`flex-grow pt-5`}>
+        {plans?.map((props, index) => (
+          <Plan {...props} index={index} />
+        ))}
+      </ul>
       <Form
         onClickSaveButton={onClickSaveButton}
         plans={plans}
+        className={tw`mt-5`}
         hidden={hidden}
       />
       <footer class={tw`flex`}>
@@ -45,6 +49,6 @@ export default function Plans() {
           onClickFloatingActionButton={onClickFloatingActionButton}
         />
       </footer>
-    </div>
+    </main>
   );
 }
