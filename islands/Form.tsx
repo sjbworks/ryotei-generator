@@ -1,6 +1,6 @@
 /** @jsx h */
 import { h } from "preact";
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import { tw } from "@twind";
 import { PlanProps } from "./Plan.tsx";
 
@@ -17,55 +17,73 @@ export default function Form({
   className,
   hidden,
 }: FormProps) {
+  const btn = tw`px-3 py-1 mt-1 rounded-md border(gray-100 1) hover:bg-gray-200`;
+  const errorClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(2 solid rose-500)`;
+  const normallyClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(2 solid warmGray-500)`;
   const [plan, setPlan] = useState<Pick<PlanProps, "dateTime" | "text">>({
     dateTime: "",
     text: "",
   });
   const [isDateTimeError, setIsDateTimeError] = useState(false);
   const [isTextError, setIsTextError] = useState(false);
+  const [dateTimeBorderClassName, setDateTimeBorderClassName] =
+    useState(normallyClassName);
+  const [textBorderClassName, setTextBorderClassName] =
+    useState(normallyClassName);
+
   const handleChangeDateTime = (e: Event) =>
     setPlan({ ...plan, dateTime: (e.target as HTMLInputElement).value });
   const handleChangeText = (e: Event) =>
     setPlan({ ...plan, text: (e.target as HTMLInputElement).value });
   const handleClickSaveButton = () => {
     if (!plan.dateTime || !plan.text) {
-      console.log(plan.dateTime);
-      console.log(plan.text);
+      !plan.dateTime && setIsDateTimeError(true);
+      !plan.text && setIsTextError(true);
       return;
     }
-    !plan.dateTime && setIsDateTimeError(true);
-    !plan.text && setIsTextError(true);
+    setIsDateTimeError(false);
+    setIsTextError(false);
     onClickSaveButton([...plans, plan]);
   };
-  const btn = tw`px-2 py-1 border(gray-100 1) hover:bg-gray-200`;
-  // TODO: state management
-  const dateTimeBorderClassName = isDateTimeError
-    ? tw`(2 solid border-red-500)`
-    : tw`border(2 solid warmGray-500)`;
-  const textErrorClassName = isTextError
-    ? tw`(2 solid border-red-500)`
-    : tw`border(2 solid warmGray-500)`;
+
+  useEffect(() => {
+    isDateTimeError
+      ? setDateTimeBorderClassName(errorClassName)
+      : setDateTimeBorderClassName(normallyClassName);
+  }, [isDateTimeError]);
+  useEffect(() => {
+    isTextError
+      ? setTextBorderClassName(errorClassName)
+      : setTextBorderClassName(normallyClassName);
+  }, [isTextError]);
+
   return (
     <div
       class={tw`p-3 flex flex-col gap-2 w-full rounded-t-md bg-warmGray-200 ${hidden} ${className}`}
     >
-      <label>
+      <label class={tw`w-full`}>
         <input
           type="datetime-local"
           value={plan.dateTime}
-          class={tw`p-3 rounded-md bg-warmGray-50 ease-in ${dateTimeBorderClassName}`}
+          class={dateTimeBorderClassName}
           onInput={handleChangeDateTime}
         />
       </label>
-      <label>
+      {isDateTimeError && (
+        <span class={tw`text-rose-600 text-sm`}>日時を入力して下さい</span>
+      )}
+      <label class={tw`w-full`}>
         <input
           type="text"
-          class={tw`p-3 rounded-md bg-warmGray-50 ease-in ${textErrorClassName}`}
+          class={textBorderClassName}
           value={plan.text}
           onInput={handleChangeText}
           placeholder={"内容を入力してください"}
         />
       </label>
+      {isTextError && (
+        <span class={tw`text-rose-600 text-sm`}>内容を入力して下さい</span>
+      )}
       <button onClick={handleClickSaveButton} class={btn}>
         保存
       </button>
