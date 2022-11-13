@@ -37,15 +37,16 @@ export default function PlansAreaProps({ className }: PlansAreaProps) {
           <Plan {...props} index={index} />
         ))}
       </ul>
-      <Form
-        onClickSaveButton={onClickSaveButton}
-        plans={plans}
-        className={tw`mt-5`}
-        hidden={hidden}
-      />
-      <footer class={tw`flex`}>
+
+      <footer class={tw`sticky right-0 bottom-0 text-right`}>
+        <Form
+          onClickSaveButton={onClickSaveButton}
+          plans={plans}
+          className={tw`mt-5`}
+          hidden={hidden}
+        />
         <FloatingActionButton
-          className={tw`ml-auto sticky bottom-0 mt-5`}
+          className={tw`sticky bottom-5 mt-7`}
           onClickFloatingActionButton={onClickFloatingActionButton}
         />
       </footer>

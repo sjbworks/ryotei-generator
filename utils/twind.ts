@@ -14,6 +14,10 @@ export const config: Configuration = {
       warmGray: colors.warmGray,
       rose: colors.rose,
       blueGray: colors.blueGray,
+      babyPowder: "#FFFCF9",
+      ultraRed: "#FFB5BD",
+      persianIndigo: "#340068",
+      celeste: "#B1EDE8",
     },
   },
 };
