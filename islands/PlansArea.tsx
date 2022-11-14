@@ -46,7 +46,7 @@ export default function PlansAreaProps({ className }: PlansAreaProps) {
           hidden={hidden}
         />
         <FloatingActionButton
-          className={tw`sticky bottom-5 mt-7`}
+          className={tw`sticky my-5`}
           onClickFloatingActionButton={onClickFloatingActionButton}
         />
       </footer>

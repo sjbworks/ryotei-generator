@@ -13,7 +13,7 @@ export default function FloatingActionButton({
 }: FloatingActionButtonProps) {
   return (
     <button
-      class={tw`w-50 h-50 rounded-full p-3 rounded-full hover:bg-rose-100 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none ${className}`}
+      class={tw`w-50 h-50 rounded-full p-3 rounded-full bg-persianIndigo hover:bg-blueGray-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none ${className}`}
       onClick={onClickFloatingActionButton}
     >
       <svg
@@ -25,8 +25,8 @@ export default function FloatingActionButton({
       >
         <path
           fill="transparent"
-          stroke="#000"
-          stroke-width="30"
+          stroke="#FFFCF9"
+          stroke-width="50"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664108636741"
@@ -34,8 +34,8 @@ export default function FloatingActionButton({
         />
         <path
           fill="transparent"
-          stroke="#000"
-          stroke-width="30"
+          stroke="#FFFCF9"
+          stroke-width="50"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664108641224"
@@ -43,8 +43,8 @@ export default function FloatingActionButton({
         />
         <path
           fill="transparent"
-          stroke="#000"
-          stroke-width="30"
+          stroke="#FFFCF9"
+          stroke-width="50"
           stroke-linecap="round"
           stroke-linejoin="round"
           data-time="1664108643140"
