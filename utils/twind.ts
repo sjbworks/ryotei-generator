@@ -16,7 +16,7 @@ export const config: Configuration = {
       blueGray: colors.blueGray,
       babyPowder: "#FFFCF9",
       ultraRed: "#FFB5BD",
-      persianIndigo: "#340068",
+      persianIndigo: "#4E598C",
       celeste: "#B1EDE8",
     },
   },
