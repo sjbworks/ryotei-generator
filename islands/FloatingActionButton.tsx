@@ -13,7 +13,7 @@ export default function FloatingActionButton({
 }: FloatingActionButtonProps) {
   return (
     <button
-      class={tw`w-50 h-50 rounded-full p-3 rounded-full bg-persianIndigo hover:bg-blueGray-700 active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none ${className}`}
+      class={tw`w-50 h-50 rounded-full p-3 rounded-full bg-morningBlue hover:bg-ultraRed active:shadow-lg mouse shadow transition ease-in duration-200 focus:outline-none ${className}`}
       onClick={onClickFloatingActionButton}
     >
       <svg

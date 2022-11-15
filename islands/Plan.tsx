@@ -10,16 +10,22 @@ export interface PlanProps {
 }
 
 export default function Plan({ dateTime, text, index }: PlanProps) {
-  const DATETIME_FORMAT = "yyyy/MM/dd";
+  const DATE_FORMAT = "yyyy/MM/dd";
+  const TIME_FORMAT = "HH:mm";
   return (
-    <li class={tw`flex flex-row gap-2 w-full font-sans text-base`} key={index}>
-      <span class={tw`whitespace-nowrap`}>
-        {format(new Date(dateTime), DATETIME_FORMAT)}
-      </span>
-      <span class={tw`whitespace-nowrap`}>
-        {format(new Date(dateTime), "HH:mm")}
+    <div
+      class={tw`flex flex-row gap-2 w-full font-sans text-base mt-2`}
+      key={index}
+    >
+      <span class={tw`flex flex-col`}>
+        <span class={tw`whitespace-nowrap inline-block`}>
+          {format(new Date(dateTime), DATE_FORMAT)}
+        </span>
+        <span class={tw`whitespace-nowrap inline-block font-medium`}>
+          {format(new Date(dateTime), TIME_FORMAT)}
+        </span>
       </span>
       <span>{text}</span>
-    </li>
+    </div>
   );
 }

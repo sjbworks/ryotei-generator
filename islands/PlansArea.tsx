@@ -5,6 +5,7 @@ import Plan, { PlanProps } from "./Plan.tsx";
 import Form from "./Form.tsx";
 import { tw } from "@twind";
 import FloatingActionButton from "./FloatingActionButton.tsx";
+import { format } from "date-fns";
 
 export interface PlansAreaProps {
   className: string;
@@ -29,14 +30,33 @@ export default function PlansAreaProps({ className }: PlansAreaProps) {
     () => (isFormOpen ? setHidden("") : setHidden(tw`hidden`)),
     [isFormOpen]
   );
+  const [prevDate, setPrevDate] = useState<string | undefined>();
 
   return (
     <main class={className}>
-      <ul class={tw`flex-grow pt-5`}>
-        {plans?.map((props, index) => (
-          <Plan {...props} index={index} />
-        ))}
-      </ul>
+      <div class={tw`flex-grow pt-5`}>
+        {plans?.map((props, index) => {
+          // TODO: FIXME
+          console.log(index);
+          const DATE_FORMAT = "yyyy/MM/dd";
+          const propsDate = format(new Date(props.dateTime), DATE_FORMAT);
+          console.log(propsDate);
+          console.log(prevDate);
+          if ((index > 0 && !prevDate) || (index > 0 && propsDate !== prevDate))
+            setPrevDate(propsDate);
+
+          return (
+            <div>
+              {/* {index > 0 && propsDate !== prevDate && ( */}
+              <span
+                class={tw`w-full border-t-solid border-2 border-t-blueGray`}
+              />
+              {/* )} */}
+              <Plan {...props} index={index} />
+            </div>
+          );
+        })}
+      </div>
 
       <footer class={tw`sticky right-0 bottom-0 text-right`}>
         <Form
