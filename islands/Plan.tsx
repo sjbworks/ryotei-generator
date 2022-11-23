@@ -14,7 +14,7 @@ export default function Plan({ dateTime, text, index }: PlanProps) {
   const TIME_FORMAT = "HH:mm";
   return (
     <div
-      class={tw`flex flex-row gap-2 w-full font-sans text-base mt-2`}
+      class={tw`flex flex-row gap-2 w-full font-sans text-base mt-2 border-t-2 pt-2`}
       key={index}
     >
       <span class={tw`flex flex-col`}>
