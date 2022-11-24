@@ -34,15 +34,19 @@ export default function PlansAreaProps({ className }: PlansAreaProps) {
 
   return (
     <main class={className}>
-      <div class={tw`flex-grow pt-5`}>
-        {plans?.map((props, index) => {
-          return (
-            <div>
-              <Plan {...props} index={index} />
-            </div>
-          );
-        })}
-      </div>
+      <table class={tw`flex-grow pt-5 table-auto`}>
+        <thead>
+          <tr>
+            <th>datetime</th>
+            <th>schedule</th>
+          </tr>
+        </thead>
+        <tbody>
+          {plans?.map((props, index) => {
+            return <Plan {...props} index={index} />;
+          })}
+        </tbody>
+      </table>
 
       <footer class={tw`sticky right-0 bottom-0 text-right`}>
         <Form
