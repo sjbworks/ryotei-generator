@@ -1,16 +1,16 @@
 /** @jsx h */
 import { h } from "preact";
-import { tw } from "@twind";
-import PlansArea from "../islands/PlansArea.tsx";
+import { tw } from "twind";
+import PlansView from "../islands/PlansView.tsx";
 import Header from "../components/Header.tsx";
 
 export default function Home() {
   return (
     <div
-      class={tw`flex flex-col p-5 mx-auto max-w-screen-md min-h-screen bg-babyPowder subpixel-antialiased`}
+      class={tw`flex flex-col px-5 pt-3 mx-auto max-w-screen-md min-h-screen bg-babyPowder subpixel-antialiased`}
     >
       <Header />
-      <PlansArea className={tw`flex flex-col flex-grow`} />
+      <PlansView className={tw`flex flex-col flex-grow`} />
     </div>
   );
 }
