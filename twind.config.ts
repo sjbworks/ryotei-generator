@@ -1,14 +1,15 @@
-import { IS_BROWSER } from "$fresh/runtime.ts";
-import { Configuration, setup } from "twind";
+import { Options } from "$fresh/plugins/twind.ts";
 import * as colors from "twind/colors";
 
-export * from "twind";
-
-export const config: Configuration = {
-  darkMode: "class",
-  mode: "silent",
+export default {
+  selfURL: import.meta.url,
   theme: {
     colors: {
+      black: colors.black,
+      gray: colors.gray,
+      white: colors.white,
+      transparent: "transparent",
+      red: colors.red,
       orange: colors.orange,
       green: colors.green,
       warmGray: colors.warmGray,
@@ -21,5 +22,5 @@ export const config: Configuration = {
       celeste: "#B1EDE8",
     },
   },
-};
-if (IS_BROWSER) setup(config);
+  darkMode: "class",
+} as Options;

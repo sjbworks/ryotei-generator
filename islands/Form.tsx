@@ -1,7 +1,7 @@
 /** @jsx h */
 import { h } from "preact";
 import { useState, useEffect } from "preact/hooks";
-import { tw } from "@twind";
+import { tw } from "twind";
 import { PlanProps } from "./Plan.tsx";
 
 interface FormProps {
@@ -59,7 +59,7 @@ export default function Form({
 
   return (
     <div
-      class={tw`p-5 flex flex-col gap-2 w-full rounded-lg bg-gradient-to-r from-ultraRed to-persianIndigo backdrop-blur-sm ${hidden} ${className}`}
+      class={tw`p-5 flex flex-col gap-2 w-full bg-[#E8E7E5] rounded-lg backdrop-blur-sm ${hidden} ${className}`}
     >
       <label class={tw`w-full`}>
         <input
