@@ -59,7 +59,7 @@ export default function Form({
 
   return (
     <div
-      class={tw`p-5 flex flex-col gap-2 w-full bg-gray-300 rounded-lg ${hidden} ${className}`}
+      class={tw`p-5 flex flex-col gap-2 w-full bg-white rounded-lg border-2 border-black ${hidden} ${className}`}
     >
       <label class={tw`w-full`}>
         <input

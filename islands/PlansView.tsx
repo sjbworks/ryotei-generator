@@ -5,7 +5,6 @@ import Plan, { PlanProps } from "./Plan.tsx";
 import Form from "./Form.tsx";
 import { tw } from "twind";
 import FloatingActionButton from "./FloatingActionButton.tsx";
-import { format } from "date-fns";
 
 export interface PlansViewProps {
   className: string;
@@ -30,7 +29,6 @@ export default function PlansViewProps({ className }: PlansViewProps) {
     () => (isFormOpen ? setHidden("") : setHidden(tw`hidden`)),
     [isFormOpen]
   );
-  const [prevDate, setPrevDate] = useState<string | undefined>();
 
   return (
     <main class={className}>
