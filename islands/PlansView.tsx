@@ -32,11 +32,11 @@ export default function PlansViewProps({ className }: PlansViewProps) {
 
   return (
     <main class={className}>
-      <table class={tw`table-auto`}>
-        <thead>
-          <tr>
-            <th>datetime</th>
-            <th>schedule</th>
+      <table class={tw`mt-5`}>
+        <thead class={tw`bg-gray-200`}>
+          <tr class={tw`text-lg`}>
+            <th>Datetime</th>
+            <th class={tw`border-l-2 border-white`}>Schedule</th>
           </tr>
         </thead>
         <tbody>
