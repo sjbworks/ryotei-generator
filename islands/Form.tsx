@@ -17,7 +17,7 @@ export default function Form({
   className,
   hidden,
 }: FormProps) {
-  const btn = tw`px-3 py-1 mt-1 rounded-md border(gray-100 1) ease-in-out duration-300 bg-morningBlue hover:bg-ultraRed`;
+  const btn = tw`px-3 py-1 mt-1 rounded-md focus:outline-none ease-in-out duration-300 bg-orange hover:bg-darkOrange outline-0`;
   const errorClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(2 solid rose-500) bg-white`;
   const normallyClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(2 solid warmGray-500) bg-white`;
   const [plan, setPlan] = useState<Pick<PlanProps, "dateTime" | "text">>({
@@ -59,7 +59,7 @@ export default function Form({
 
   return (
     <div
-      class={tw`p-5 flex flex-col gap-2 w-full bg-[#E8E7E5] rounded-lg backdrop-blur-sm ${hidden} ${className}`}
+      class={tw`p-5 flex flex-col gap-2 w-full bg-gray-300 rounded-lg ${hidden} ${className}`}
     >
       <label class={tw`w-full`}>
         <input
