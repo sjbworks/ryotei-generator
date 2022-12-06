@@ -1,5 +1,6 @@
 /** @jsx h */
 import { h } from "preact";
+import { Signal } from "@preact/signals";
 import { useState, useEffect } from "preact/hooks";
 import { tw } from "twind";
 import { PlanProps } from "./Plan.tsx";

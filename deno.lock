@@ -106,6 +106,8 @@
     "https://deno.land/x/ts_morph@16.0.0/mod.ts": "adba9b82f24865d15d2c78ef6074b9a7457011719056c9928c800f130a617c93",
     "https://deno.land/x/ts_morph@16.0.0/ts_morph.d.ts": "38668b0e3780282a56a805425494490b0045d1928bd040c47a94095749dab8c3",
     "https://deno.land/x/ts_morph@16.0.0/ts_morph.js": "9fc0f3d6a3997c2df023fabc4e529d2117d214ffd4fd04247ca2f56c4e9cd470",
+    "https://esm.sh/*@preact/signals@1.1.1": "35df7774b423fe1f3939f523c5d8803c8c0011e21f123b5f86d07b3d1dd2f098",
+    "https://esm.sh/@preact/signals-core@1.2.1": "f18f688b1075191323afdbe5e23685db8b05515510c25175c0dc1eede266e541",
     "https://esm.sh/date-fns@2.29.1": "02063cf66f7552e9d80c448b7f699a04c53dc5dd15a73c9bbe91e61ecd84b28e",
     "https://esm.sh/preact-render-to-string@5.2.0?deps=preact@10.8.2": "500bc7fb05b781955aa442793c2c57878a634afa12db2ea80d79e06bfef7709a",
     "https://esm.sh/preact@10.8.2": "0caa82ee638e16fa74bd6ac74764b587ae8e91e39b1556bd5a06ada17bfb370b",
@@ -129,6 +131,10 @@
     "https://esm.sh/v91/date-fns@2.29.1/deno/date-fns.js": "7b81a56ab3480f6e3fb586511d649b191e8ee1d73afc45eb1cfc15dc8df2a044",
     "https://esm.sh/v91/date-fns@2.29.1/esm~.d.ts": "854cdc32752c20a63ea380b17a93c803d6d1e06fa939fdc231732a7b35e8a906",
     "https://esm.sh/v91/date-fns@2.29.1/typings.d.ts": "78970079abb8ab84672f48cff8565a57d5741794ea83857c14152aa09ed636ed",
+    "https://esm.sh/v96/@preact/signals-core@1.2.1/deno/signals-core.js": "231fa0a7a6284ac939843c2f99ef8e2dbc918249b0446d29bb2d0fe51a98e223",
+    "https://esm.sh/v96/@preact/signals-core@1.2.1/dist/signals-core.d.ts": "e39c59670049b772b2c7748907af01f4fb5d5706b88fa8266d9135925ca5baf7",
+    "https://esm.sh/v96/@preact/signals@1.1.1/X-ZS8q/deno/signals.js": "e0d91d54bba72308afdc70de0a7dc52623262ad4120fe54793ef63ce52c2752b",
+    "https://esm.sh/v96/@preact/signals@1.1.1/X-ZS8q/dist/signals.d.ts": "2c766d8d5911bcbb1aac4ac1da8965e830c54bcb96da8feb4f4b3e5dcd9ee02c",
     "https://esm.sh/v96/twind@0.16.17/colors/colors.d.ts": "5d718e9e958b108054073182c3a6b3a8c8352b4c9b2c520a15bdb56bac56868f",
     "https://esm.sh/v96/twind@0.16.17/deno/colors.js": "e3e6b2135ee371978b66011b130019c2a70be71c7743a5ef2dc657f7bbc16edd"
   }

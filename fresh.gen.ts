@@ -11,8 +11,9 @@ import * as $4 from "./routes/github/[username].tsx";
 import * as $5 from "./routes/index.tsx";
 import * as $$0 from "./islands/FloatingActionButton.tsx";
 import * as $$1 from "./islands/Form.tsx";
-import * as $$2 from "./islands/Plan.tsx";
-import * as $$3 from "./islands/PlansView.tsx";
+import * as $$2 from "./islands/Header.tsx";
+import * as $$3 from "./islands/Plan.tsx";
+import * as $$4 from "./islands/PlansView.tsx";
 
 const manifest = {
   routes: {
@@ -26,8 +27,9 @@ const manifest = {
   islands: {
     "./islands/FloatingActionButton.tsx": $$0,
     "./islands/Form.tsx": $$1,
-    "./islands/Plan.tsx": $$2,
-    "./islands/PlansView.tsx": $$3,
+    "./islands/Header.tsx": $$2,
+    "./islands/Plan.tsx": $$3,
+    "./islands/PlansView.tsx": $$4,
   },
   baseUrl: import.meta.url,
   config,

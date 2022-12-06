@@ -2,7 +2,11 @@
 import { h } from "preact";
 import { tw } from "twind";
 
-export default function Header() {
+interface HeaderProps {
+  onClickClearButton: () => void;
+}
+
+export default function Header({ onClickClearButton }: HeaderProps) {
   return (
     <header class={tw`flex mt-2`}>
       <svg
@@ -167,6 +171,12 @@ export default function Header() {
           stroke-linecap="round"
         />
       </svg>
+      <button
+        onClick={onClickClearButton}
+        class={tw`ml-auto px-5 rounded-full border-2 border-gray-200 focus:outline-none`}
+      >
+        Clear
+      </button>
     </header>
   );
 }
