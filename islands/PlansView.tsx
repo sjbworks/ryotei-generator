@@ -43,7 +43,7 @@ export default function PlansViewProps({ className }: PlansViewProps) {
   return (
     <div>
       <Header onClickClearButton={onClickClearButton} />
-      <main class={className}>
+      <main class={tw`flex flex-col flex-grow`}>
         <table class={tw`mt-5`}>
           <thead class={tw`bg-gray-200`}>
             <tr class={tw`text-lg`}>
@@ -57,19 +57,19 @@ export default function PlansViewProps({ className }: PlansViewProps) {
             })}
           </tbody>
         </table>
-        <footer class={tw`sticky right-0 bottom-0 text-right`}>
-          <Form
-            onClickSaveButton={onClickSaveButton}
-            plans={plans}
-            className={tw`mt-5`}
-            hidden={hidden}
-          />
-          <FloatingActionButton
-            className={tw`sticky my-3`}
-            onClickFloatingActionButton={onClickFloatingActionButton}
-          />
-        </footer>
       </main>
+      <Form
+        onClickSaveButton={onClickSaveButton}
+        plans={plans}
+        className={tw`mt-5`}
+        hidden={hidden}
+      />
+      <footer class={tw`sticky right-0 bottom-0 text-right`}>
+        <FloatingActionButton
+          className={tw`sticky my-3`}
+          onClickFloatingActionButton={onClickFloatingActionButton}
+        />
+      </footer>
     </div>
   );
 }
