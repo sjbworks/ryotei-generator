@@ -41,13 +41,13 @@ export default function PlansViewProps({ className }: PlansViewProps) {
   );
 
   return (
-    <div>
+    <div class={tw`flex flex-col min-h-screen`}>
       <Header onClickClearButton={onClickClearButton} />
       <main class={tw`flex flex-col flex-grow`}>
         <table class={tw`mt-5`}>
           <thead class={tw`bg-gray-200`}>
             <tr class={tw`text-lg`}>
-              <th>Datetime</th>
+              <th class={tw`w-1/4`}>Datetime</th>
               <th class={tw`border-l-2 border-white`}>Schedule</th>
             </tr>
           </thead>
@@ -64,7 +64,7 @@ export default function PlansViewProps({ className }: PlansViewProps) {
         className={tw`mt-5`}
         hidden={hidden}
       />
-      <footer class={tw`sticky right-0 bottom-0 text-right`}>
+      <footer class={tw`sticky right-0 bottom-0 text-right mt-3`}>
         <FloatingActionButton
           className={tw`sticky my-3`}
           onClickFloatingActionButton={onClickFloatingActionButton}

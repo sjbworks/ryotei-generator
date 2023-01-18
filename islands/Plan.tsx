@@ -18,7 +18,7 @@ export default function Plan({ dateTime, text, index }: PlanProps) {
       key={index}
     >
       <td class={tw`w-1/4`}>
-        <div class={tw`flex flex-col p-1`}>
+        <div class={tw`flex flex-col p-2`}>
           <span class={tw`whitespace-nowrap inline-block font-medium`}>
             {format(new Date(dateTime), DATE_FORMAT)}
           </span>
@@ -27,7 +27,7 @@ export default function Plan({ dateTime, text, index }: PlanProps) {
           </span>
         </div>
       </td>
-      <td class={tw`p-1 w-3/4 border-l-2 border-gray-200`}>{text}</td>
+      <td class={tw`p-2 w-3/4 border-l-2 border-gray-200`}>{text}</td>
     </tr>
   );
 }
