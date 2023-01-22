@@ -3,7 +3,7 @@ import { h } from "preact";
 import { Signal } from "@preact/signals";
 import { useState, useEffect } from "preact/hooks";
 import { tw } from "twind";
-import { PlanProps } from "./Plan.tsx";
+import { PlanProps } from "../components/Plan.tsx";
 
 interface FormProps {
   onClickSaveButton: (plan: Pick<PlanProps, "dateTime" | "text">) => void;

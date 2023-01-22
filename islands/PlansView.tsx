@@ -7,6 +7,8 @@ import Header from "./Header.tsx";
 import { tw } from "twind";
 import FloatingActionButton from "../components/FloatingActionButton.tsx";
 import { signal } from "@preact/signals";
+import { format } from "date-fns";
+
 export interface PlansViewProps {
   className: string;
 }
@@ -48,9 +50,15 @@ export default function PlansViewProps({ className }: PlansViewProps) {
             </tr>
           </thead> */}
           {/* <tbody> */}
-          {signalPlans.value?.map((props, index) => {
-            return <Plan {...props} index={index} />;
-          })}
+          {signalPlans.value
+            ?.sort((a, b) => {
+              const aDate = new Date(a.dateTime);
+              const bDate = new Date(b.dateTime);
+              return aDate.getTime() - bDate.getTime();
+            })
+            .map((props, index) => {
+              return <Plan {...props} index={index} />;
+            })}
           {/* </tbody> */}
         </div>
       </main>
