@@ -6,15 +6,13 @@ import { tw } from "twind";
 import { PlanProps } from "./Plan.tsx";
 
 interface FormProps {
-  onClickSaveButton: (plans: Pick<PlanProps, "dateTime" | "text">[]) => void;
-  plans: Pick<PlanProps, "dateTime" | "text">[];
+  onClickSaveButton: (plan: Pick<PlanProps, "dateTime" | "text">) => void;
   className: string;
   hidden: string;
 }
 
 export default function Form({
   onClickSaveButton,
-  plans,
   className,
   hidden,
 }: FormProps) {
@@ -44,7 +42,7 @@ export default function Form({
     }
     setIsDateTimeError(false);
     setIsTextError(false);
-    onClickSaveButton([...plans, plan]);
+    onClickSaveButton(plan);
   };
 
   useEffect(() => {

@@ -2,6 +2,7 @@
 import { Fragment, h } from "preact";
 import { AppProps } from "$fresh/server.ts";
 import { Head } from "$fresh/runtime.ts";
+import { tw } from "twind";
 
 export default function App({ Component }: AppProps) {
   return (
@@ -28,7 +29,9 @@ export default function App({ Component }: AppProps) {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" />
         <link rel="stylesheet" href="/app.css" />
       </Head>
-      <Component />
+      <div class={tw`bg-babyPowder`}>
+        <Component />
+      </div>
     </Fragment>
   );
 }

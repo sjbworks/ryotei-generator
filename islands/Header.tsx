@@ -8,7 +8,7 @@ interface HeaderProps {
 
 export default function Header({ onClickClearButton }: HeaderProps) {
   return (
-    <header class={tw`flex mt-2`}>
+    <header class={tw`flex mt-5 pt-3`}>
       <svg
         width="60"
         height="50"

@@ -5,9 +5,7 @@ import PlansView from "../islands/PlansView.tsx";
 
 export default function Home() {
   return (
-    <div
-      class={tw`flex flex-col px-5 pt-3 mx-auto max-w-screen-md min-h-screen bg-babyPowder subpixel-antialiased`}
-    >
+    <div class={tw`flex flex-col px-5 mx-auto max-w-screen-md min-h-screen `}>
       <PlansView className={tw`flex flex-col flex-grow`} />
     </div>
   );

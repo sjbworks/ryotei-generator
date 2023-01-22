@@ -13,11 +13,11 @@ export default function Plan({ dateTime, text, index }: PlanProps) {
   const DATE_FORMAT = "yyyy/MM/dd";
   const TIME_FORMAT = "HH:mm";
   return (
-    <tr
-      class={tw`gap-2 w-full font-sans text-base mt-2 border-t-2`}
+    <div
+      class={tw`flex flex-row gap-2 w-full font-sans text-base mt-2 `} // border-t-2
       key={index}
     >
-      <td class={tw`w-1/4`}>
+      <div class={tw`w-1/4`}>
         <div class={tw`flex flex-col p-2`}>
           <span class={tw`whitespace-nowrap inline-block font-medium`}>
             {format(new Date(dateTime), DATE_FORMAT)}
@@ -26,8 +26,9 @@ export default function Plan({ dateTime, text, index }: PlanProps) {
             {format(new Date(dateTime), TIME_FORMAT)}
           </span>
         </div>
-      </td>
-      <td class={tw`p-2 w-3/4 border-l-2 border-gray-200`}>{text}</td>
-    </tr>
+      </div>
+      {/* border-l-2 border-gray-200 */}
+      <div class={tw`p-2 w-3/4`}>{text}</div>
+    </div>
   );
 }

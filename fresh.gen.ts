@@ -7,11 +7,9 @@ import * as $0 from "./routes/_app.tsx";
 import * as $1 from "./routes/api/joke.ts";
 import * as $2 from "./routes/github/[username].tsx";
 import * as $3 from "./routes/index.tsx";
-import * as $$0 from "./islands/FloatingActionButton.tsx";
-import * as $$1 from "./islands/Form.tsx";
-import * as $$2 from "./islands/Header.tsx";
-import * as $$3 from "./islands/Plan.tsx";
-import * as $$4 from "./islands/PlansView.tsx";
+import * as $$0 from "./islands/Form.tsx";
+import * as $$1 from "./islands/Header.tsx";
+import * as $$2 from "./islands/PlansView.tsx";
 
 const manifest = {
   routes: {
@@ -21,11 +19,9 @@ const manifest = {
     "./routes/index.tsx": $3,
   },
   islands: {
-    "./islands/FloatingActionButton.tsx": $$0,
-    "./islands/Form.tsx": $$1,
-    "./islands/Header.tsx": $$2,
-    "./islands/Plan.tsx": $$3,
-    "./islands/PlansView.tsx": $$4,
+    "./islands/Form.tsx": $$0,
+    "./islands/Header.tsx": $$1,
+    "./islands/PlansView.tsx": $$2,
   },
   baseUrl: import.meta.url,
   config,
