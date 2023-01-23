@@ -52,9 +52,9 @@ export default function PlansViewProps({ className }: PlansViewProps) {
           {/* <tbody> */}
           {signalPlans.value
             ?.sort((a, b) => {
-              const aDate = new Date(a.dateTime);
-              const bDate = new Date(b.dateTime);
-              return aDate.getTime() - bDate.getTime();
+              return (
+                new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
+              );
             })
             .map((props, index) => {
               return <Plan {...props} index={index} />;
