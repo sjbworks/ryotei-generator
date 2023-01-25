@@ -8,6 +8,7 @@ import { tw } from "twind";
 import FloatingActionButton from "../components/FloatingActionButton.tsx";
 import { signal } from "@preact/signals";
 import { format } from "date-fns";
+import _ from "lodash";
 
 export interface PlansViewProps {
   className: string;
@@ -32,6 +33,11 @@ export default function PlansViewProps({ className }: PlansViewProps) {
     sessionStorage.clear();
     signalPlans.value = [];
   };
+  const sortPlans = signalPlans.value?.sort((a, b) => {
+    return new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime();
+  });
+  const a = _.partition(sortPlans, (sortPlan) => sortPlan.dateTime);
+  console.log(a);
 
   useEffect(
     () => (isFormOpen ? setHidden("") : setHidden(tw`hidden`)),
@@ -50,15 +56,15 @@ export default function PlansViewProps({ className }: PlansViewProps) {
             </tr>
           </thead> */}
           {/* <tbody> */}
-          {signalPlans.value
+          {/* {signalPlans.value
             ?.sort((a, b) => {
               return (
                 new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
               );
-            })
-            .map((props, index) => {
-              return <Plan {...props} index={index} />;
-            })}
+            }) */}
+          {sortPlans.map((props, index) => {
+            return <Plan {...props} index={index} />;
+          })}
           {/* </tbody> */}
         </div>
       </main>
