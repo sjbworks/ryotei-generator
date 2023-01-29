@@ -7,7 +7,7 @@ import Header from "./Header.tsx";
 import { tw } from "twind";
 import FloatingActionButton from "../components/FloatingActionButton.tsx";
 import { signal } from "@preact/signals";
-import { format } from "date-fns";
+import { format, previousDay } from "date-fns";
 import _ from "lodash";
 
 export interface PlansViewProps {
@@ -24,7 +24,6 @@ export default function PlansViewProps({ className }: PlansViewProps) {
     signalPlans.value = [...signalPlans.value, plan];
     sessionStorage.setItem("plans", JSON.stringify(signalPlans.value));
     setIsFormOpen(false);
-    console.log(signalPlans);
   };
   const onClickFloatingActionButton = () => {
     isFormOpen ? setIsFormOpen(false) : setIsFormOpen(true);
@@ -36,8 +35,12 @@ export default function PlansViewProps({ className }: PlansViewProps) {
   const sortPlans = signalPlans.value?.sort((a, b) => {
     return new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime();
   });
-  const a = _.partition(sortPlans, (sortPlan) => sortPlan.dateTime);
-  console.log(a);
+  const arrayDivider = sortPlans.map(
+    (e, i) =>
+      sortPlans[i - 1] &&
+      format(new Date(e.dateTime), "yyyy/MM/dd") !==
+        format(new Date(sortPlans[i - 1].dateTime), "yyyy/MM/dd")
+  );
 
   useEffect(
     () => (isFormOpen ? setHidden("") : setHidden(tw`hidden`)),
@@ -49,23 +52,12 @@ export default function PlansViewProps({ className }: PlansViewProps) {
       <Header onClickClearButton={onClickClearButton} />
       <main class={tw`flex flex-col flex-grow`}>
         <div class={tw`mt-10`}>
-          {/* <thead class={tw`bg-gray-200`}>
-            <tr class={tw`text-lg`}>
-              <th class={tw`w-1/4`}></th>
-              <th class={tw`border-l-2 border-white`}></th>
-            </tr>
-          </thead> */}
-          {/* <tbody> */}
-          {/* {signalPlans.value
-            ?.sort((a, b) => {
-              return (
-                new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
-              );
-            }) */}
           {sortPlans.map((props, index) => {
-            return <Plan {...props} index={index} />;
+            const classProps = arrayDivider[index]
+              ? "border-solid border-t-2 pt-2"
+              : "";
+            return <Plan {...props} index={index} className={classProps} />;
           })}
-          {/* </tbody> */}
         </div>
       </main>
       <footer class={tw`sticky right-0 bottom-0 text-right mt-3`}>

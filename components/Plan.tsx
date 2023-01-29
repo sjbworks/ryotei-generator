@@ -7,14 +7,15 @@ export interface PlanProps {
   dateTime: string;
   text: string;
   index: number;
+  className?: string;
 }
 
-export default function Plan({ dateTime, text, index }: PlanProps) {
+export default function Plan({ dateTime, text, index, className }: PlanProps) {
   const DATE_FORMAT = "yyyy/MM/dd";
   const TIME_FORMAT = "HH:mm";
   return (
     <div
-      class={tw`flex flex-row gap-2 w-full font-sans text-base mt-2 `} // border-t-2
+      class={tw`flex flex-row gap-2 w-full font-sans text-base mt-2 ${className}`} // border-t-2
       key={index}
     >
       <div class={tw`w-1/4`}>
