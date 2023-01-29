@@ -10,7 +10,7 @@
     "twind": "https://esm.sh/twind@0.16.17",
     "twind/": "https://esm.sh/twind@0.16.17/",
     "date-fns": "https://esm.sh/date-fns@2.29.1",
-    "date-fns/": "https://esm.sh/date-fns@2.29.1/",
-    "lodash": "https://esm.sh/lodash-es@4.17.21"
+    "html2canvas": "https://esm.sh/html2canvas@1.4.1",
+    "react-icons/": "https://esm.sh/react-icons@4.7.1/"
   }
 }

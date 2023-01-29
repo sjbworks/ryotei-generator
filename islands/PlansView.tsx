@@ -8,7 +8,6 @@ import { tw } from "twind";
 import FloatingActionButton from "../components/FloatingActionButton.tsx";
 import { signal } from "@preact/signals";
 import { format, previousDay } from "date-fns";
-import _ from "lodash";
 
 export interface PlansViewProps {
   className: string;
