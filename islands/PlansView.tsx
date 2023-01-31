@@ -1,6 +1,6 @@
 /** @jsx h */
 import { h, Fragment } from "preact";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 import Plan, { PlanProps } from "../components/Plan.tsx";
 import Form from "./Form.tsx";
 import Header from "./Header.tsx";
@@ -8,10 +8,43 @@ import { tw } from "twind";
 import FloatingActionButton from "../components/FloatingActionButton.tsx";
 import { signal } from "@preact/signals";
 import { format, previousDay } from "date-fns";
+import html2canvas from "html2canvas";
 
 export interface PlansViewProps {
   className: string;
 }
+
+const exportAsImage = () => {
+  // html2canvas(el).then((canvas) => {
+  //   const targetImgUri = canvas.toDataURL("img/png");
+  //   saveAsImage(targetImgUri);
+  // });
+  // const canvas = await html2canvas(el);
+  // const image = await canvas.toDataURL("image/png", 1.0);
+  // // download the image
+  // downloadImage(image, "test.png");
+
+  html2canvas(document.querySelector("#cardScreen")).then((canvas) => {
+    let a = document.createElement("a");
+    a.href = canvas.toDataURL("image/jpeg", 1.0);
+    a.download = "mycard.jpg";
+    a.click();
+  });
+};
+
+const downloadImage = (blob, fileName) => {
+  const fakeLink = window.document.createElement("a");
+  fakeLink.style = "display:none;";
+  fakeLink.download = fileName;
+
+  fakeLink.href = blob;
+
+  document.body.appendChild(fakeLink);
+  fakeLink.click();
+  document.body.removeChild(fakeLink);
+
+  fakeLink.remove();
+};
 
 export default function PlansViewProps({ className }: PlansViewProps) {
   const initialPlans = JSON.parse(`${sessionStorage.getItem("plans")}`) || [];
@@ -46,10 +79,14 @@ export default function PlansViewProps({ className }: PlansViewProps) {
     [isFormOpen]
   );
 
+  const exportRef = useRef();
+
   return (
     <div class={tw`flex flex-col min-h-screen`}>
       <Header onClickClearButton={onClickClearButton} />
-      <main class={tw`flex flex-col flex-grow`}>
+      <button onClick={exportAsImage()}>image</button>
+
+      <main class={tw`flex flex-col flex-grow`} ref={exportRef} id="cardScreen">
         <div class={tw`mt-10`}>
           {sortPlans.map((props, index) => {
             const classProps = arrayDivider[index]
