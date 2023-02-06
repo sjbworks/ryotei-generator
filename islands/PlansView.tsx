@@ -14,28 +14,16 @@ export interface PlansViewProps {
   className: string;
 }
 
-const exportAsImage = () => {
-  // html2canvas(el).then((canvas) => {
-  //   const targetImgUri = canvas.toDataURL("img/png");
-  //   saveAsImage(targetImgUri);
-  // });
-  // const canvas = await html2canvas(el);
-  // const image = await canvas.toDataURL("image/png", 1.0);
-  // // download the image
-  // downloadImage(image, "test.png");
-
-  html2canvas(document.querySelector("#cardScreen")).then((canvas) => {
-    let a = document.createElement("a");
-    a.href = canvas.toDataURL("image/jpeg", 1.0);
-    a.download = "mycard.jpg";
-    a.click();
-  });
+const exportAsImage = async (element: HTMLElement) => {
+  const canvas = await html2canvas(element);
+  const image = canvas.toDataURL("image/png", 1.0);
+  downloadImage(image);
 };
 
-const downloadImage = (blob, fileName) => {
+const downloadImage = (blob: string) => {
   const fakeLink = window.document.createElement("a");
-  fakeLink.style = "display:none;";
-  fakeLink.download = fileName;
+  // fakeLink.style = "display:none;";
+  fakeLink.download = "ryotei";
 
   fakeLink.href = blob;
 
@@ -79,14 +67,20 @@ export default function PlansViewProps({ className }: PlansViewProps) {
     [isFormOpen]
   );
 
+  useEffect(() => {}, []);
+
   const exportRef = useRef();
 
   return (
     <div class={tw`flex flex-col min-h-screen`}>
       <Header onClickClearButton={onClickClearButton} />
-      <button onClick={exportAsImage()}>image</button>
+      <button onClick={() => exportAsImage(exportRef.current)}>image</button>
 
-      <main class={tw`flex flex-col flex-grow`} ref={exportRef} id="cardScreen">
+      <main
+        class={tw`flex flex-col flex-grow`}
+        ref={exportRef.current}
+        id="cardScreen"
+      >
         <div class={tw`mt-10`}>
           {sortPlans.map((props, index) => {
             const classProps = arrayDivider[index]
