@@ -67,8 +67,6 @@ export default function PlansViewProps({ className }: PlansViewProps) {
     [isFormOpen]
   );
 
-  useEffect(() => {}, []);
-
   const exportRef = useRef();
 
   return (
