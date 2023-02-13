@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from "preact";
 import { useRef } from "preact/hooks";
 import { tw } from "twind";
 import PlansView from "../islands/PlansView.tsx";

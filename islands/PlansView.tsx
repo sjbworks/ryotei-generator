@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h, Fragment } from "preact";
 import { useState, useEffect, useRef } from "preact/hooks";
 import Plan, { PlanProps } from "../components/Plan.tsx";
 import Form from "./Form.tsx";
@@ -13,26 +11,6 @@ import html2canvas from "html2canvas";
 export interface PlansViewProps {
   className: string;
 }
-
-const exportAsImage = async (element: HTMLElement) => {
-  const canvas = await html2canvas(element);
-  const image = canvas.toDataURL("image/png", 1.0);
-  downloadImage(image);
-};
-
-const downloadImage = (blob: string) => {
-  const fakeLink = window.document.createElement("a");
-  // fakeLink.style = "display:none;";
-  fakeLink.download = "ryotei";
-
-  fakeLink.href = blob;
-
-  document.body.appendChild(fakeLink);
-  fakeLink.click();
-  document.body.removeChild(fakeLink);
-
-  fakeLink.remove();
-};
 
 export default function PlansViewProps({ className }: PlansViewProps) {
   const initialPlans = JSON.parse(`${sessionStorage.getItem("plans")}`) || [];
@@ -61,6 +39,26 @@ export default function PlansViewProps({ className }: PlansViewProps) {
       format(new Date(e.dateTime), "yyyy/MM/dd") !==
         format(new Date(sortPlans[i - 1].dateTime), "yyyy/MM/dd")
   );
+
+  const exportAsImage = async (element: HTMLElement) => {
+    const canvas = await html2canvas(element);
+    const image = canvas.toDataURL("image/png", 1.0);
+    downloadImage(image);
+  };
+
+  const downloadImage = (blob: string) => {
+    const fakeLink = window.document.createElement("a");
+    // fakeLink.style = "display:none;";
+    fakeLink.download = "ryotei";
+
+    fakeLink.href = blob;
+
+    document.body.appendChild(fakeLink);
+    fakeLink.click();
+    document.body.removeChild(fakeLink);
+
+    fakeLink.remove();
+  };
 
   useEffect(
     () => (isFormOpen ? setHidden("") : setHidden(tw`hidden`)),

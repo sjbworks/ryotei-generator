@@ -1,12 +1,10 @@
-/** @jsx h */
-import { Fragment, h } from "preact";
 import { AppProps } from "$fresh/server.ts";
 import { Head } from "$fresh/runtime.ts";
 import { tw } from "twind";
 
 export default function App({ Component }: AppProps) {
   return (
-    <Fragment>
+    <>
       <Head>
         <link
           rel="apple-touch-icon"
@@ -32,6 +30,6 @@ export default function App({ Component }: AppProps) {
       <div class={tw`bg-babyPowder`}>
         <Component />
       </div>
-    </Fragment>
+    </>
   );
 }
