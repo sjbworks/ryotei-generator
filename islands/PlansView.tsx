@@ -13,6 +13,8 @@ export interface PlansViewProps {
 }
 
 export default function PlansViewProps({ className }: PlansViewProps) {
+  const didMountRef = useRef(false);
+  const ref = useRef<HTMLElement | null>(null);
   const initialPlans = JSON.parse(`${sessionStorage.getItem("plans")}`) || [];
   const signalPlans =
     signal<Pick<PlanProps, "dateTime" | "text">[]>(initialPlans);
@@ -40,7 +42,8 @@ export default function PlansViewProps({ className }: PlansViewProps) {
         format(new Date(sortPlans[i - 1].dateTime), "yyyy/MM/dd")
   );
 
-  const exportAsImage = async (element: HTMLElement) => {
+  const exportAsImage = async (element: HTMLElement | null) => {
+    if (!element) return;
     const canvas = await html2canvas(element);
     const image = canvas.toDataURL("image/png", 1.0);
     downloadImage(image);
@@ -65,18 +68,20 @@ export default function PlansViewProps({ className }: PlansViewProps) {
     [isFormOpen]
   );
 
-  const exportRef = useRef();
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+  }, []);
 
   return (
     <div class={tw`flex flex-col min-h-screen`}>
-      <Header onClickClearButton={onClickClearButton} />
-      <button onClick={() => exportAsImage(exportRef.current)}>image</button>
-
-      <main
-        class={tw`flex flex-col flex-grow`}
-        ref={exportRef.current}
-        id="cardScreen"
-      >
+      <Header
+        onClickClearButton={onClickClearButton}
+        onClickScreenShotButton={() => exportAsImage(ref.current)}
+      />
+      <main class={tw`flex flex-col flex-grow`} ref={ref} id="cardScreen">
         <div class={tw`mt-10`}>
           {sortPlans.map((props, index) => {
             const classProps = arrayDivider[index]

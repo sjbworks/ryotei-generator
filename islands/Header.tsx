@@ -2,11 +2,15 @@ import { tw } from "twind";
 
 interface HeaderProps {
   onClickClearButton: () => void;
+  onClickScreenShotButton: () => void;
 }
 
-export default function Header({ onClickClearButton }: HeaderProps) {
+export default function Header({
+  onClickClearButton,
+  onClickScreenShotButton,
+}: HeaderProps) {
   return (
-    <header class={tw`flex mt-5 pt-3`}>
+    <header class={tw`flex items-center mt-5 pt-3`}>
       <svg
         width="60"
         height="50"
@@ -169,12 +173,20 @@ export default function Header({ onClickClearButton }: HeaderProps) {
           stroke-linecap="round"
         />
       </svg>
+      {/* <div class={tw`ml-auto`}> */}
+      <button
+        onClick={onClickScreenShotButton}
+        class={tw`ml-auto block px-5 rounded-full border-2 border-gray-200 focus:outline-none`}
+      >
+        ScreenShot
+      </button>
       <button
         onClick={onClickClearButton}
-        class={tw`ml-auto px-5 rounded-full border-2 border-gray-200 focus:outline-none`}
+        class={tw`ml-2 block px-5 rounded-full border-2 border-gray-200 focus:outline-none`}
       >
         Clear
       </button>
+      {/* </div> */}
     </header>
   );
 }
