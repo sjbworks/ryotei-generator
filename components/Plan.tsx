@@ -13,7 +13,7 @@ export default function Plan({ dateTime, text, index, className }: PlanProps) {
   const TIME_FORMAT = "HH:mm";
   return (
     <div
-      class={tw`flex flex-row gap-2 w-full font-sans text-base mt-2 ${className}`} // border-t-2
+      class={tw`flex flex-row gap-2 w-full font-sans text-base mt-2 ${className}`}
       key={index}
     >
       <div class={tw`w-1/4`}>
@@ -26,7 +26,6 @@ export default function Plan({ dateTime, text, index, className }: PlanProps) {
           </span>
         </div>
       </div>
-      {/* border-l-2 border-gray-200 */}
       <div class={tw`p-2 w-3/4`}>{text}</div>
     </div>
   );

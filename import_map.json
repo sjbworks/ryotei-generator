@@ -9,7 +9,7 @@
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@5.2.4",
     "twind": "https://esm.sh/twind@0.9.0",
     "twind/": "https://esm.sh/twind@0.9.0/",
-    "date-fns": "https://esm.sh/date-fns@2.29.1",
+    "date-fns": "https://esm.sh/date-fns@2.29.3",
     "html2canvas": "https://esm.sh/html2canvas@1.4.1",
     "react-icons/": "https://esm.sh/react-icons@4.7.1/"
   }
