@@ -5,7 +5,7 @@ import Header from "./Header.tsx";
 import { tw } from "twind";
 import FloatingActionButton from "../components/FloatingActionButton.tsx";
 import { signal } from "@preact/signals";
-import { format, previousDay } from "date-fns";
+import { format } from "date-fns";
 import html2canvas from "html2canvas";
 
 export default function PlansViewProps() {
