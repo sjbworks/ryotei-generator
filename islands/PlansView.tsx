@@ -54,7 +54,12 @@ export default function PlansViewProps() {
     document.body.removeChild(fakeLink);
     fakeLink.remove();
   };
+  type Status = "VIEW" | "EDIT";
+  const [status, setStatus] = useState<Status>("VIEW");
 
+  const handleFooterButton = (value: Status) => {
+    setStatus(value);
+  };
   useEffect(
     () => (isFormOpen ? setHidden("") : setHidden(tw`hidden`)),
     [isFormOpen]
@@ -75,25 +80,22 @@ export default function PlansViewProps() {
         onClickScreenShotButton={() => exportAsImage(ref.current)}
       />
       <main class={tw`flex flex-col flex-grow min-h-max`} ref={ref}>
-        <div class={tw`mt-10`}>
-          {sortPlans.map((props, index) => {
-            const classProps = arrayDivider[index]
-              ? "border-solid border-t-2 pt-2"
-              : "";
-            return <Plan {...props} index={index} className={classProps} />;
-          })}
-        </div>
+        {status === "VIEW" ? (
+          <div class={tw`mt-10`}>
+            {sortPlans.map((props, index) => {
+              const classProps = arrayDivider[index]
+                ? "border-solid border-t-2 pt-2"
+                : "";
+              return <Plan {...props} index={index} className={classProps} />;
+            })}
+          </div>
+        ) : (
+          <Form onClickSaveButton={onClickSaveButton} className={tw`mt-5`} />
+        )}
       </main>
-      <footer class={tw`sticky right-0 bottom-0 text-right mt-3 w-100`}>
-        <Form
-          onClickSaveButton={onClickSaveButton}
-          className={tw`mt-5`}
-          hidden={hidden}
-        />
-        <FloatingActionButton
-          className={tw`my-3`}
-          onClickFloatingActionButton={onClickFloatingActionButton}
-        />
+      <footer class={tw`sticky text-right mt-3 w-100`}>
+        <button onClick={() => handleFooterButton("VIEW")}>旅程</button>
+        <button onClick={() => handleFooterButton("EDIT")}>編集</button>
       </footer>
     </div>
   );

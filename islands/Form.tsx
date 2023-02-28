@@ -5,14 +5,9 @@ import { PlanProps } from "../components/Plan.tsx";
 interface FormProps {
   onClickSaveButton: (plan: Pick<PlanProps, "dateTime" | "text">) => void;
   className: string;
-  hidden: string;
 }
 
-export default function Form({
-  onClickSaveButton,
-  className,
-  hidden,
-}: FormProps) {
+export default function Form({ onClickSaveButton, className }: FormProps) {
   const btn = tw`px-3 py-1 mt-1 rounded-md focus:outline-none ease-in-out duration-300 bg-orange hover:bg-darkOrange outline-0`;
   const errorClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(2 solid rose-500) bg-white`;
   const normallyClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(2 solid warmGray-500) bg-white`;
@@ -54,9 +49,7 @@ export default function Form({
   }, [isTextError]);
 
   return (
-    <div
-      class={tw`p-5 flex flex-col gap-2 w-full bg-white rounded-lg border-2 border-black ${hidden} ${className}`}
-    >
+    <div class={tw`p-5 flex flex-col gap-2 w-full ${className}`}>
       <label class={tw`w-full`}>
         <input
           type="datetime-local"

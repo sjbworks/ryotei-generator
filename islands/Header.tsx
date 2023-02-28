@@ -173,7 +173,6 @@ export default function Header({
           stroke-linecap="round"
         />
       </svg>
-      {/* <div class={tw`ml-auto`}> */}
       <button
         onClick={onClickScreenShotButton}
         class={tw`ml-auto block px-5 rounded-full border-2 border-gray-200 focus:outline-none`}
@@ -186,7 +185,6 @@ export default function Header({
       >
         Clear
       </button>
-      {/* </div> */}
     </header>
   );
 }
