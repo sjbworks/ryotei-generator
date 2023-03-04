@@ -8,21 +8,17 @@ import { signal } from "@preact/signals";
 import { format } from "date-fns";
 import html2canvas from "html2canvas";
 
+type Status = "VIEW" | "EDIT";
+
 export default function PlansViewProps() {
   const didMountRef = useRef(false);
   const ref = useRef<HTMLElement | null>(null);
   const initialPlans = JSON.parse(`${sessionStorage.getItem("plans")}`) || [];
   const signalPlans =
     signal<Pick<PlanProps, "dateTime" | "text">[]>(initialPlans);
-  const [isFormOpen, setIsFormOpen] = useState(true);
-  const [hidden, setHidden] = useState<string>("");
   const onClickSaveButton = (plan: Pick<PlanProps, "dateTime" | "text">) => {
     signalPlans.value = [...signalPlans.value, plan];
     sessionStorage.setItem("plans", JSON.stringify(signalPlans.value));
-    setIsFormOpen(false);
-  };
-  const onClickFloatingActionButton = () => {
-    isFormOpen ? setIsFormOpen(false) : setIsFormOpen(true);
   };
   const onClickClearButton = () => {
     sessionStorage.clear();
@@ -54,16 +50,17 @@ export default function PlansViewProps() {
     document.body.removeChild(fakeLink);
     fakeLink.remove();
   };
-  type Status = "VIEW" | "EDIT";
-  const [status, setStatus] = useState<Status>("VIEW");
+
+  const [status, setStatus] = useState<Status>("EDIT");
 
   const handleFooterButton = (value: Status) => {
     setStatus(value);
   };
-  useEffect(
-    () => (isFormOpen ? setHidden("") : setHidden(tw`hidden`)),
-    [isFormOpen]
-  );
+
+  const footerButtonClass =
+    "flex-1 p-4 hover:bg-gray-300 focus:outline-none ease-in-out duration-300";
+  const viewBgColor = status === "VIEW" ? "bg-gray-300" : "";
+  const editBgColor = status === "EDIT" ? "bg-gray-300" : "";
 
   useEffect(() => {
     if (!didMountRef.current) {
@@ -81,7 +78,7 @@ export default function PlansViewProps() {
       />
       <main class={tw`flex flex-col flex-grow min-h-max`} ref={ref}>
         {status === "VIEW" ? (
-          <div class={tw`mt-10`}>
+          <div class={tw`p-10`}>
             {sortPlans.map((props, index) => {
               const classProps = arrayDivider[index]
                 ? "border-solid border-t-2 pt-2"
@@ -93,9 +90,19 @@ export default function PlansViewProps() {
           <Form onClickSaveButton={onClickSaveButton} className={tw`mt-5`} />
         )}
       </main>
-      <footer class={tw`sticky text-right mt-3 w-100`}>
-        <button onClick={() => handleFooterButton("VIEW")}>旅程</button>
-        <button onClick={() => handleFooterButton("EDIT")}>編集</button>
+      <footer class={tw`sticky mt-3 w-100 flex`}>
+        <button
+          class={tw`${footerButtonClass} ${viewBgColor}`}
+          onClick={() => handleFooterButton("VIEW")}
+        >
+          旅程
+        </button>
+        <button
+          class={tw`${footerButtonClass} ${editBgColor}`}
+          onClick={() => handleFooterButton("EDIT")}
+        >
+          編集
+        </button>
       </footer>
     </div>
   );

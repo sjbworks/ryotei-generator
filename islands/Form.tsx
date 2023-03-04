@@ -9,8 +9,8 @@ interface FormProps {
 
 export default function Form({ onClickSaveButton, className }: FormProps) {
   const btn = tw`px-3 py-1 mt-1 rounded-md focus:outline-none ease-in-out duration-300 bg-orange hover:bg-darkOrange outline-0`;
-  const errorClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(2 solid rose-500) bg-white`;
-  const normallyClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(2 solid warmGray-500) bg-white`;
+  const errorClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(1 solid rose-500)`;
+  const normallyClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(1 solid gray-300)`;
   const [plan, setPlan] = useState<Pick<PlanProps, "dateTime" | "text">>({
     dateTime: "",
     text: "",
@@ -49,7 +49,9 @@ export default function Form({ onClickSaveButton, className }: FormProps) {
   }, [isTextError]);
 
   return (
-    <div class={tw`p-5 flex flex-col gap-2 w-full ${className}`}>
+    <div
+      class={tw`p-8 flex flex-col gap-2 w-full bg-white border(2 solid gray-500) rounded-md ${className}`}
+    >
       <label class={tw`w-full`}>
         <input
           type="datetime-local"
