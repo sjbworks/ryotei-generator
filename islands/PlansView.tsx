@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from "preact/hooks";
-import Plan, { PlanProps } from "../components/Plan.tsx";
-import Form from "./Form.tsx";
+import Plan, { PlanRowProps } from "../components/Plan.tsx";
+import Form, { PlanProps } from "./Form.tsx";
 import Header from "./Header.tsx";
 import { tw } from "twind";
-import FloatingActionButton from "../components/FloatingActionButton.tsx";
 import { signal } from "@preact/signals";
 import { format } from "date-fns";
 import html2canvas from "html2canvas";
@@ -14,15 +13,22 @@ export default function PlansViewProps() {
   const didMountRef = useRef(false);
   const ref = useRef<HTMLElement | null>(null);
   const initialPlans = JSON.parse(`${sessionStorage.getItem("plans")}`) || [];
-  const signalPlans =
-    signal<Pick<PlanProps, "dateTime" | "text">[]>(initialPlans);
-  const onClickSaveButton = (plan: Pick<PlanProps, "dateTime" | "text">) => {
+  const signalPlans = signal<PlanProps[]>(initialPlans);
+  const signalTitle = signal<string>(
+    JSON.parse(`${sessionStorage.getItem("title")}`) || ""
+  );
+  const [status, setStatus] = useState<Status>("EDIT");
+  const onClickSaveButton = (plan: PlanProps, title: string) => {
     signalPlans.value = [...signalPlans.value, plan];
+    signalTitle.value = title;
     sessionStorage.setItem("plans", JSON.stringify(signalPlans.value));
+    sessionStorage.setItem("title", JSON.stringify(title));
+    setStatus("VIEW");
   };
   const onClickClearButton = () => {
     sessionStorage.clear();
     signalPlans.value = [];
+    signalTitle.value = "";
   };
   const sortPlans = signalPlans.value?.sort((a, b) => {
     return new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime();
@@ -51,8 +57,6 @@ export default function PlansViewProps() {
     fakeLink.remove();
   };
 
-  const [status, setStatus] = useState<Status>("EDIT");
-
   const handleFooterButton = (value: Status) => {
     setStatus(value);
   };
@@ -69,7 +73,6 @@ export default function PlansViewProps() {
     }
   }, []);
 
-  // TODO: sticky footer
   return (
     <div class={tw`flex flex-col px-5 mx-auto max-w-screen-md min-h-screen`}>
       <Header
@@ -78,7 +81,11 @@ export default function PlansViewProps() {
       />
       <main class={tw`flex flex-col flex-grow min-h-max`} ref={ref}>
         {status === "VIEW" ? (
-          <div class={tw`p-10`}>
+          <div class={tw`border(2 solid gray-500) rounded-md mt-10 p-8`}>
+            {/* TODO: コンポーネントに切り出す */}
+            <span class={tw`p-2 text-xl font-semibold`}>
+              {signalTitle.value}
+            </span>
             {sortPlans.map((props, index) => {
               const classProps = arrayDivider[index]
                 ? "border-solid border-t-2 pt-2"
@@ -87,7 +94,7 @@ export default function PlansViewProps() {
             })}
           </div>
         ) : (
-          <Form onClickSaveButton={onClickSaveButton} className={tw`mt-5`} />
+          <Form onClickSaveButton={onClickSaveButton} className={tw`mt-10`} />
         )}
       </main>
       <footer class={tw`sticky mt-3 w-100 flex`}>
