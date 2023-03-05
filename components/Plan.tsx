@@ -1,14 +1,19 @@
 import { tw } from "twind";
 import { format } from "date-fns";
 
-export interface PlanProps {
+export interface PlanRowProps {
   dateTime: string;
   text: string;
   index: number;
   className?: string;
 }
 
-export default function Plan({ dateTime, text, index, className }: PlanProps) {
+export default function Plan({
+  dateTime,
+  text,
+  index,
+  className,
+}: PlanRowProps) {
   const DATE_FORMAT = "yyyy/MM/dd";
   const TIME_FORMAT = "HH:mm";
   return (
