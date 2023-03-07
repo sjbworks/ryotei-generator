@@ -21,7 +21,7 @@ export default function Plan({
       class={tw`flex flex-row gap-2 w-full font-sans text-base mt-2 ${className}`}
       key={index}
     >
-      <div class={tw`w-1/4`}>
+      <div>
         <div class={tw`flex flex-col p-2`}>
           <span class={tw`whitespace-nowrap inline-block font-medium`}>
             {format(new Date(dateTime), DATE_FORMAT)}
@@ -31,7 +31,7 @@ export default function Plan({
           </span>
         </div>
       </div>
-      <div class={tw`p-2 w-3/4`}>{text}</div>
+      <div class={tw`p-2`}>{text}</div>
     </div>
   );
 }

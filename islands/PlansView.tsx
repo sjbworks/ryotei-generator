@@ -81,7 +81,7 @@ export default function PlansViewProps() {
       />
       <main class={tw`flex flex-col flex-grow min-h-max`} ref={ref}>
         {status === "VIEW" ? (
-          <div class={tw`border(2 solid gray-500) rounded-md mt-10 p-8`}>
+          <div class={tw`border(2 solid gray-500) rounded-md m-10 p-8`}>
             {/* TODO: コンポーネントに切り出す */}
             <span class={tw`p-2 text-xl font-semibold`}>
               {signalTitle.value}
@@ -94,7 +94,7 @@ export default function PlansViewProps() {
             })}
           </div>
         ) : (
-          <Form onClickSaveButton={onClickSaveButton} className={tw`mt-10`} />
+          <Form onClickSaveButton={onClickSaveButton} className={tw`m-10`} />
         )}
       </main>
       <footer class={tw`sticky mt-3 w-100 flex`}>

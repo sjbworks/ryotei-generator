@@ -10,7 +10,7 @@ interface FormProps {
 }
 
 export default function Form({ onClickSaveButton, className }: FormProps) {
-  const btn = tw`px-3 py-1 mt-1 rounded-md focus:outline-none ease-in-out duration-300 bg-orange hover:bg-darkOrange outline-0`;
+  const btn = tw`px-3 py-1 mt-6 rounded-md focus:outline-none ease-in-out duration-300 bg-orange hover:bg-darkOrange outline-0`;
   const errorClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(1 solid rose-500)`;
   const normallyClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(1 solid gray-300)`;
   const [title, setTitle] = useState<string>(
@@ -72,39 +72,45 @@ export default function Form({ onClickSaveButton, className }: FormProps) {
 
   return (
     <div
-      class={tw`p-8 flex flex-col gap-2 w-full bg-white border(2 solid gray-500) rounded-md ${className}`}
+      class={tw`p-8 flex flex-col gap-2 bg-white border(2 solid gray-500) rounded-md ${className}`}
     >
-      <label class={tw`w-full`}>
-        <input
-          type="text"
-          value={title}
-          class={titleBorderClassName}
-          onInput={handleChangeTitle}
-        />
+      <label class={tw`w-full font-semibold text-base`} for="title">
+        タイトル
       </label>
+      <input
+        type="text"
+        value={title}
+        class={titleBorderClassName}
+        onInput={handleChangeTitle}
+        id="title"
+      />
       {isTitleError && (
         <span class={tw`text-rose-600 text-sm`}>タイトルを入力して下さい</span>
       )}
-      <label class={tw`w-full`}>
-        <input
-          type="datetime-local"
-          value={plan.dateTime}
-          class={dateTimeBorderClassName}
-          onInput={handleChangeDateTime}
-        />
+      <label class={tw`w-full font-semibold text-base`} for="datetime">
+        日時
       </label>
+      <input
+        type="datetime-local"
+        value={plan.dateTime}
+        class={dateTimeBorderClassName}
+        onInput={handleChangeDateTime}
+        id="datetime"
+      />
       {isDateTimeError && (
         <span class={tw`text-rose-600 text-sm`}>日時を入力して下さい</span>
       )}
-      <label class={tw`w-full`}>
-        <input
-          type="text"
-          class={textBorderClassName}
-          value={plan.text}
-          onInput={handleChangeText}
-          placeholder={"内容を入力してください"}
-        />
+      <label class={tw`w-full font-semibold text-base`} for="content">
+        内容
       </label>
+      <input
+        type="text"
+        class={textBorderClassName}
+        value={plan.text}
+        onInput={handleChangeText}
+        placeholder={"内容を入力してください"}
+        id="content"
+      />
       {isTextError && (
         <span class={tw`text-rose-600 text-sm`}>内容を入力して下さい</span>
       )}
