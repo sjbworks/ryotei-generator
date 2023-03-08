@@ -38,7 +38,7 @@ export default function PlansViewProps() {
   const sortPlans = signalPlans.value?.sort((a, b) => {
     return new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime();
   });
-  const arrayDivider = sortPlans.map(
+  const arrayDivider = sortPlans?.map(
     (e, i) =>
       sortPlans[i - 1] &&
       format(new Date(e.dateTime), "yyyy/MM/dd") !==
@@ -91,7 +91,7 @@ export default function PlansViewProps() {
             <span class={tw`p-2 text-xl font-semibold`}>
               {signalTitle.value}
             </span>
-            {sortPlans.map((props, index) => {
+            {sortPlans?.map((props, index) => {
               const classProps = arrayDivider[index]
                 ? "border-solid border-t-2 pt-2"
                 : "";
