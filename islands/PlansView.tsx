@@ -12,17 +12,22 @@ type Status = "VIEW" | "EDIT";
 export default function PlansViewProps() {
   const didMountRef = useRef(false);
   const ref = useRef<HTMLElement | null>(null);
-  const initialPlans = JSON.parse(`${sessionStorage?.getItem("plans")}`) || [];
-  const signalPlans = signal<PlanProps[]>(initialPlans);
   const signalTitle = signal<string>(
     JSON.parse(`${sessionStorage?.getItem("title")}`) || ""
   );
   const [status, setStatus] = useState<Status>("EDIT");
+  const [plans, setPlans] = useState<PlanProps[] | []>([]);
+  const signalPlans = signal<PlanProps[]>(plans);
+
+  useEffect(() => {
+    setPlans(JSON.parse(`${sessionStorage?.getItem("plans")}`));
+  }, []);
+
   const onClickSaveButton = (plan: PlanProps, title: string) => {
     signalPlans.value = [...signalPlans.value, plan];
     signalTitle.value = title;
-    sessionStorage?.setItem("plans", JSON.stringify(signalPlans.value));
-    sessionStorage?.setItem("title", JSON.stringify(title));
+    sessionStorage.setItem("plans", JSON.stringify(signalPlans.value));
+    sessionStorage.setItem("title", JSON.stringify(title));
     setStatus("VIEW");
   };
   const onClickClearButton = () => {
