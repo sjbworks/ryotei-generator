@@ -13,9 +13,7 @@ export default function Form({ onClickSaveButton, className }: FormProps) {
   const btn = tw`px-3 py-1 mt-6 rounded-md focus:outline-none ease-in-out duration-300 bg-orange hover:bg-darkOrange outline-0`;
   const errorClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(1 solid rose-500)`;
   const normallyClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(1 solid gray-300)`;
-  const [title, setTitle] = useState<string>(
-    JSON.parse(`${sessionStorage.getItem("title")}`)
-  );
+  const [title, setTitle] = useState<string>("");
   const [plan, setPlan] = useState<Pick<PlanRowProps, "dateTime" | "text">>({
     dateTime: "",
     text: "",
