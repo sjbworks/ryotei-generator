@@ -8,13 +8,11 @@ import { format } from "date-fns";
 import html2canvas from "html2canvas";
 
 type Status = "VIEW" | "EDIT";
-
+// https://dash.deno.com/projects/sjbworks-ryotei-generator
 export default function PlansViewProps() {
   const didMountRef = useRef(false);
   const ref = useRef<HTMLElement | null>(null);
-  const signalTitle = signal<string>(
-    JSON.parse(`${sessionStorage?.getItem("title")}`) || ""
-  );
+  const signalTitle = signal<string>("");
   const [status, setStatus] = useState<Status>("EDIT");
   const [plans, setPlans] = useState<PlanProps[] | []>([]);
   const signalPlans = signal<PlanProps[]>(plans);
@@ -76,6 +74,7 @@ export default function PlansViewProps() {
       didMountRef.current = true;
       return;
     }
+    signalTitle.value = JSON.parse(`${sessionStorage?.getItem("title")}`);
   }, []);
 
   return (

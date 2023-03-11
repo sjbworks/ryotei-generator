@@ -17,12 +17,8 @@ export default function Form({ onClickSaveButton, className }: FormProps) {
     JSON.parse(`${sessionStorage.getItem("title")}`) || ""
   );
   const [plan, setPlan] = useState<Pick<PlanRowProps, "dateTime" | "text">>({
-    dateTime:
-      JSON.parse(`${sessionStorage.getItem("plans")}`)?.slice(-1)[0]
-        ?.dateTime || "",
-    text:
-      JSON.parse(`${sessionStorage.getItem("plans")}`)?.slice(-1)[0]?.text ||
-      "",
+    dateTime: "",
+    text: "",
   });
   const [isDateTimeError, setIsDateTimeError] = useState(false);
   const [isTextError, setIsTextError] = useState(false);
@@ -69,6 +65,16 @@ export default function Form({ onClickSaveButton, className }: FormProps) {
       ? setTextBorderClassName(errorClassName)
       : setTextBorderClassName(normallyClassName);
   }, [isTextError]);
+  useEffect(() => {
+    setPlan({
+      dateTime:
+        JSON.parse(`${sessionStorage.getItem("plans")}`)?.slice(-1)[0]
+          ?.dateTime || "",
+      text:
+        JSON.parse(`${sessionStorage.getItem("plans")}`)?.slice(-1)[0]?.text ||
+        "",
+    });
+  }, []);
 
   return (
     <div
