@@ -1,4 +1,8 @@
-# fresh project
+# rotei generater
+
+旅程を作って画像にできるだけのブラウザアプリです。
+
+https://sjbworks-ryotei-generator.deno.dev/
 
 ### Usage
 
