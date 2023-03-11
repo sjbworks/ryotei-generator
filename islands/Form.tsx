@@ -14,7 +14,7 @@ export default function Form({ onClickSaveButton, className }: FormProps) {
   const errorClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(1 solid rose-500)`;
   const normallyClassName = tw`p-3 w-full rounded-md bg-warmGray-50 ease-in border(1 solid gray-300)`;
   const [title, setTitle] = useState<string>(
-    JSON.parse(`${sessionStorage.getItem("title")}`) || ""
+    JSON.parse(`${sessionStorage.getItem("title")}`)
   );
   const [plan, setPlan] = useState<Pick<PlanRowProps, "dateTime" | "text">>({
     dateTime: "",
@@ -66,6 +66,7 @@ export default function Form({ onClickSaveButton, className }: FormProps) {
       : setTextBorderClassName(normallyClassName);
   }, [isTextError]);
   useEffect(() => {
+    setTitle(JSON.parse(`${sessionStorage.getItem("title")}`));
     setPlan({
       dateTime:
         JSON.parse(`${sessionStorage.getItem("plans")}`)?.slice(-1)[0]
