@@ -29,17 +29,17 @@ export default function Form({ onClickSaveButton, className }: FormProps) {
     useState(normallyClassName);
 
   const handleChangeTitle = (e: Event) =>
-    setTitle((e.target as HTMLInputElement).value);
+    setTitle((e.target as HTMLInputElement)?.value);
   const handleChangeDateTime = (e: Event) =>
-    setPlan({ ...plan, dateTime: (e.target as HTMLInputElement).value });
+    setPlan({ ...plan, dateTime: (e.target as HTMLInputElement)?.value });
   const handleChangeText = (e: Event) =>
-    setPlan({ ...plan, text: (e.target as HTMLInputElement).value });
+    setPlan({ ...plan, text: (e.target as HTMLInputElement)?.value });
 
   const handleClickSaveButton = () => {
-    if (!plan.dateTime || !plan.text || !setTitle) {
+    if (!plan.dateTime || !plan.text || !title) {
       !plan.dateTime && setIsDateTimeError(true);
       !plan.text && setIsTextError(true);
-      !setTitle && setIsTitleError(true);
+      !title && setIsTitleError(true);
       return;
     }
     setIsDateTimeError(false);
@@ -63,6 +63,7 @@ export default function Form({ onClickSaveButton, className }: FormProps) {
       ? setTextBorderClassName(errorClassName)
       : setTextBorderClassName(normallyClassName);
   }, [isTextError]);
+
   useEffect(() => {
     setTitle(JSON.parse(`${sessionStorage.getItem("title")}`));
     setPlan({

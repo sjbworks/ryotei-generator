@@ -8,13 +8,12 @@ import { format } from "date-fns";
 import html2canvas from "html2canvas";
 
 type Status = "VIEW" | "EDIT";
-// https://dash.deno.com/projects/sjbworks-ryotei-generator
 export default function PlansViewProps() {
   const didMountRef = useRef(false);
   const ref = useRef<HTMLElement | null>(null);
   const signalTitle = signal<string>("");
   const [status, setStatus] = useState<Status>("EDIT");
-  const [plans, setPlans] = useState<PlanProps[] | []>([]);
+  const [plans, setPlans] = useState<PlanProps[]>([{ dateTime: "", text: "" }]);
   const signalPlans = signal<PlanProps[]>(plans);
 
   useEffect(() => {
@@ -22,10 +21,14 @@ export default function PlansViewProps() {
   }, []);
 
   const onClickSaveButton = (plan: PlanProps, title: string) => {
-    signalPlans.value = [...signalPlans.value, plan];
+    console.log(plan, title);
+    signalPlans.value = signalPlans.value?.length
+      ? [...signalPlans.value, plan]
+      : [plan];
     signalTitle.value = title;
+    console.log(signalTitle.value);
     sessionStorage.setItem("plans", JSON.stringify(signalPlans.value));
-    sessionStorage.setItem("title", JSON.stringify(title));
+    sessionStorage.setItem("title", JSON.stringify(signalTitle.value));
     setStatus("VIEW");
   };
   const onClickClearButton = () => {
@@ -74,8 +77,12 @@ export default function PlansViewProps() {
       didMountRef.current = true;
       return;
     }
-    signalTitle.value = JSON.parse(`${sessionStorage?.getItem("title")}`);
+    // signalTitle.value = JSON.parse(`${sessionStorage?.getItem("title")}`);
   }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("plans", JSON.stringify(sortPlans));
+  }, [sortPlans]);
 
   return (
     <div class={tw`flex flex-col px-5 mx-auto max-w-screen-md min-h-screen`}>
