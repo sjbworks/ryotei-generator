@@ -11,30 +11,24 @@ type Status = "VIEW" | "EDIT";
 export default function PlansViewProps() {
   const didMountRef = useRef(false);
   const ref = useRef<HTMLElement | null>(null);
-  const signalTitle = signal<string>("");
   const [status, setStatus] = useState<Status>("EDIT");
+  const [title, setTitle] = useState<string>("");
   const [plans, setPlans] = useState<PlanProps[]>([{ dateTime: "", text: "" }]);
   const signalPlans = signal<PlanProps[]>(plans);
 
-  useEffect(() => {
-    setPlans(JSON.parse(`${sessionStorage?.getItem("plans")}`));
-  }, []);
-
   const onClickSaveButton = (plan: PlanProps, title: string) => {
-    console.log(plan, title);
     signalPlans.value = signalPlans.value?.length
       ? [...signalPlans.value, plan]
       : [plan];
-    signalTitle.value = title;
-    console.log(signalTitle.value);
+    setTitle(title);
     sessionStorage.setItem("plans", JSON.stringify(signalPlans.value));
-    sessionStorage.setItem("title", JSON.stringify(signalTitle.value));
+    sessionStorage.setItem("title", JSON.stringify(title));
     setStatus("VIEW");
   };
   const onClickClearButton = () => {
     sessionStorage.clear();
     signalPlans.value = [];
-    signalTitle.value = "";
+    setTitle("");
   };
   const sortPlans = signalPlans.value?.sort((a, b) => {
     return new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime();
@@ -77,7 +71,8 @@ export default function PlansViewProps() {
       didMountRef.current = true;
       return;
     }
-    // signalTitle.value = JSON.parse(`${sessionStorage?.getItem("title")}`);
+    setTitle(JSON.parse(`${sessionStorage?.getItem("plans")}`));
+    setPlans(JSON.parse(`${sessionStorage?.getItem("plans")}`));
   }, []);
 
   useEffect(() => {
@@ -94,10 +89,9 @@ export default function PlansViewProps() {
         {status === "VIEW" ? (
           <div class={tw`border(2 solid gray-500) rounded-md m-10 p-8`}>
             {/* TODO: コンポーネントに切り出す */}
-            <span class={tw`p-2 text-xl font-semibold`}>
-              {signalTitle.value}
-            </span>
+            <span class={tw`p-2 text-xl font-semibold`}>{title}</span>
             {sortPlans?.map((props, index) => {
+              console.log(props);
               const classProps = arrayDivider[index]
                 ? "border-solid border-t-2 pt-2"
                 : "";
